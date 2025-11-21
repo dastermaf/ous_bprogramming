@@ -1,0 +1,20 @@
+/build_setup_script.sh
+/.idea/editor.xml
+/meson.build
+/.idea/misc.xml
+/.idea/vcs.xml
+/.idea/fileTemplates/includes/C File Header.h
+/.idea/fileTemplates/internal/C Source File.c
+/.idea/file.template.settings.xml
+/.idea/fileTemplates/HTML File のコピー.html
+/.idea/inspectionProfiles/Project_Default.xml
+その他/Learning with abc/lern1
+.vscode/tasks.json
+.vscode/settings.json
+/test
+/bp14_4
+/.idea/dtsSettings.xml
+その他/Learning with abc/lern8
+その他/Learning with abc/lern7
+/.vscode/
+/buildDir/
