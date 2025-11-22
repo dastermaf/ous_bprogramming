@@ -23,10 +23,15 @@ void print_all_students(Student students[], int size) {
 }
 
 // Function to sort students by score using bubble sort
-void sort_students_by_score(Student students[], int size) {
+void sort_students_by_score(Student arr[], int size) {
     for (int i = 0; i < size - 1; i++) {
-        for (int j = 0; j < size; j++) {
-
+        for (int j = 0; j < size - 1 - i; j++) {
+            if (arr[j].score > arr[j + 1].score) {
+                // Swap arr[j] and arr[j+1]
+                Student temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
         }
     }
 }
@@ -34,7 +39,10 @@ void sort_students_by_score(Student students[], int size) {
 int main(void) {
     // Declare and initialize an array of students
     Student students[] = {
-        {1001, "Alice", 90}, {1002, "Bob", 85}, {1003, "Charlie", 70}};
+        {1001, "Alice", 90},
+        {1002, "Bob", 85},
+        {1003, "Charlie", 70}
+    };
 
     printf("Before sorting:\n");
     print_all_students(students, NUM_STUDENTS);
