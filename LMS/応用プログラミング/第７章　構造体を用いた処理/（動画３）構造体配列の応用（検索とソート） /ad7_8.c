@@ -27,7 +27,6 @@ void sort_students_by_score(Student arr[], int size) {
     for (int i = 0; i < size - 1; i++) {
         for (int j = 0; j < size - 1 - i; j++) {
             if (arr[j].score > arr[j + 1].score) {
-                // Swap arr[j] and arr[j+1]
                 Student temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
