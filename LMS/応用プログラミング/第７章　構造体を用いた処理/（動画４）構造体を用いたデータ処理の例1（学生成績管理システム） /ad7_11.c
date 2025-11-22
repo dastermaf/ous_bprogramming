@@ -12,8 +12,7 @@ typedef struct student {
 } Student;
 
 // Function to add student data
-void add_student(Student students[], int index, int id, char name[],
-                 int jp, int mt, int en) {
+void add_student(Student students[], int index, int id, char name[], int jp, int mt, int en) {
     students[index].id = id;
     strcpy(students[index].name, name);
     students[index].japanese = jp;

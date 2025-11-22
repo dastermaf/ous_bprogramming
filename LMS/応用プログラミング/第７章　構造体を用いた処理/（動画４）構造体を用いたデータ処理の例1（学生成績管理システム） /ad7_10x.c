@@ -48,22 +48,47 @@ void sort_by_average(Student students[], int count) {
 }
 
 int main(void) {
-    Student students[2];  // Array to hold student data
+    Student students[10]; // Array to hold student data
 
-    // Add student data
     add_student(students, 0, 101, "Alice", 80, 75, 90);
     add_student(students, 1, 102, "Bob", 90, 85, 80);
+    add_student(students, 2, 103, "Charlie", 60, 65, 70);
+    add_student(students, 3, 104, "Diana", 95, 98, 99);
+    add_student(students, 4, 105, "Evan", 70, 72, 68);
+    add_student(students, 5, 106, "Fiona", 88, 90, 85);
+    add_student(students, 6, 107, "George", 50, 55, 40);
+    add_student(students, 7, 108, "Hannah", 78, 82, 80);
+    add_student(students, 8, 109, "Ian", 35, 40, 42);
+    add_student(students, 9, 110, "Julia", 100, 100, 100);
 
     printf("Before sorting:\n");
     display_student(students[0]);
     display_student(students[1]);
+    display_student(students[2]);
+    display_student(students[3]);
+    display_student(students[4]);
+    display_student(students[5]);
+    display_student(students[6]);
+    display_student(students[7]);
+    display_student(students[8]);
+    display_student(students[9]);
+
 
     // Sort students by average score
-    sort_by_average(students, 2);
+    sort_by_average(students, 9);
 
-    printf("After sorting by average:\n");
+
+    printf("\nAfter sorting by average:\n");
     display_student(students[0]);
     display_student(students[1]);
+    display_student(students[2]);
+    display_student(students[3]);
+    display_student(students[4]);
+    display_student(students[5]);
+    display_student(students[6]);
+    display_student(students[7]);
+    display_student(students[8]);
+    display_student(students[9]);
 
     return (0);
 }
