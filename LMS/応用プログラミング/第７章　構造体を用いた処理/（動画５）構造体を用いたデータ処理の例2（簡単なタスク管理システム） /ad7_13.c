@@ -17,8 +17,7 @@ typedef struct task {
 } Task;
 
 // Function to add a task (value passing)
-Task add_task(int id, char description[], int year, int month, int day,
-              int completed) {
+Task add_task(int id, char description[], int year, int month, int day, int completed) {
     Task t;
     t.id = id;
     strcpy(t.description, description);
@@ -31,10 +30,9 @@ Task add_task(int id, char description[], int year, int month, int day,
 
 // Function to display a task (value passing)
 void display_task(Task t) {
-    printf(
-        "ID: %d, Description: %s, Deadline: %d/%d/%d, Completed: %s\n",
-        t.id, t.description, t.deadline.year, t.deadline.month,
-        t.deadline.day, t.completed ? "Yes" : "No");
+    printf("ID: %d, Description: %s, Deadline: %d/%d/%d, Completed: %s\n",
+                    t.id, t.description, t.deadline.year, t.deadline.month,
+                    t.deadline.day, t.completed ? "Yes" : "No");
 }
 
 // Function to compare two dates
@@ -49,17 +47,18 @@ int compare_dates(Date d1, Date d2) {
     return (d1.day - d2.day);
 }
 
+void swap_tasks(Task arr[], int i, int j) {
+    Task temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
 // Function to sort tasks by deadline (Bubble Sort)
 void sort_by_deadline(Task tasks[], int count) {
-    int i, j;
-    Task temp;
-    for (i = 0; i < count - 1; i++) {
-        for (j = 0; j < count - 1 - i; j++) {
-            if (compare_dates(tasks[j].deadline, tasks[j + 1].deadline) >
-                0) {
-                temp = tasks[j];
-                tasks[j] = tasks[j + 1];
-                tasks[j + 1] = temp;
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = 0; j < count - 1 - i; j++) {
+            if (compare_dates(tasks[j].deadline, tasks[j + 1].deadline) > 0) {
+                swap_tasks(tasks, j, j + 1);
             }
         }
     }

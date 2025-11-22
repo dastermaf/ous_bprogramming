@@ -17,8 +17,7 @@ typedef struct task {
 } Task;
 
 // Function to add a task (value passing)
-Task add_task(int id, char description[], int year, int month, int day,
-              int completed) {
+Task add_task(int id, char description[], int year, int month, int day, int completed) {
     Task t;
     t.id = id;
     strcpy(t.description, description);
@@ -38,7 +37,14 @@ void display_task(Task t) {
 }
 
 // Function to filter uncompleted tasks
-/* BLANK */
+void filter_uncompleted_tasks(Task arr[], int count) {
+    printf("\nUncompleted Tasks:\n");
+    for (int i = 0; i < count; i++) {
+        if (arr[i].completed == 0) {
+            display_task(arr[i]);
+        }
+    }
+}
 
 int main(void) {
     Task my_tasks[10];
@@ -49,7 +55,8 @@ int main(void) {
         add_task(1, "Buy groceries", 2025, 12, 25, 0);
     my_tasks[task_count++] =
         add_task(2, "Finish report", 2025, 11, 30, 1);
-    my_tasks[task_count++] = add_task(3, "Clean room", 2025, 10, 20, 1);
+    my_tasks[task_count++] =
+        add_task(3, "Clean room", 2025, 10, 20, 1);
 
     printf("Task List:\n");
     for (i = 0; i < task_count; i++) {
