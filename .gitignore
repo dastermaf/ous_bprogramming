@@ -20,4 +20,4 @@
 /buildDir/
 !/CMakeLists.txt
 !/.vscode/
-!/cmake-build-basic/
+!/cmake-build-basic/!/その他/Learning with abc/
