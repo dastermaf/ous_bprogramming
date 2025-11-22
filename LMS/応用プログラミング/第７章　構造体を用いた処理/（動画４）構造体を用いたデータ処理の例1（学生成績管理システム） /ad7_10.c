@@ -12,8 +12,7 @@ typedef struct student {
 } Student;
 
 // Function to add student data
-void add_student(Student students[], int index, int id, char name[],
-                 int jp, int mt, int en) {
+void add_student(Student students[], int index, int id, char name[], int jp, int mt, int en) {
     students[index].id = id;
     strcpy(students[index].name, name);
     students[index].japanese = jp;
@@ -31,14 +30,19 @@ void display_student(Student s) {
 }
 
 // Function to swap two student structures
-/* BLANK */
+void swap_students(Student s[], int i, int j) {
+    Student temp = s[i];
+    s[i] = s[j];
+    s[j] = temp;
+}
 
 // Function to sort students by average score (descending)
 void sort_by_average(Student students[], int count) {
-    int i, j;
-    for (i = 0; i < count - 1; i++) {
-        for (j = 0; j < count - 1 - i; j++) {
-            /* BLANK */
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = 0; j < count - 1 - i; j++) {
+            if (students[j].average < students[j + 1].average) {
+                swap_students(students, (j), (j + 1));
+            }
         }
     }
 }
