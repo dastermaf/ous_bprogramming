@@ -74,6 +74,8 @@ int main(void) {
     my_tasks[task_count++] =
         add_task(2, "Finish report", 2025, 11, 30, 0);
     my_tasks[task_count++] = add_task(3, "Clean room", 2025, 10, 20, 1);
+    my_tasks[task_count++] = add_task(4, "Pay bills", 2025, 11, 15, 0);
+    my_tasks[task_count++] = add_task(5, "Study programming", 2025, 11, 15, 1);
 
     printf("Before sorting:\n");
     for (i = 0; i < task_count; i++) {
