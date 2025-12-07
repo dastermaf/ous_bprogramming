@@ -27,8 +27,8 @@ int main(void) {
     unsigned a, b;
 
     printf("非負の整数を２つ入力せよ。\n");
-    printf("a     : "); scanf("%u", &a);
-    printf("b     : "); scanf("%u", &b);
+    printf("a : "); scanf("%u", &a);
+    printf("b : "); scanf("%u", &b);
 
     putchar('\n');
     printf("a     = "); print_bits(a);       putchar('\n');
