@@ -10,24 +10,24 @@ typedef struct {
 
 int main(void) {
     Student s;
-    /* BLANK */
+    Student* p;
 
-    /* BLANK */
+    p = &s;
 
-    /* BLANK */
-    /* BLANK */
-    /* BLANK */
+    p->id = 1;
+    strcpy(p->name, "Taro");
+    p->score = 85;
 
     printf("s.id: %d\n", s.id);
     printf("s.name: %s\n", s.name);
-    printf("s.score: %d\n", /* BLANK */);
+    printf("s.score: %d\n", s.score);
 
-    printf("p->id: %d\n", /* BLANK */);
+    printf("p->id: %d\n", p->id);
     printf("p->name: %s\n", p->name);
-    printf("p->score: %d\n", /* BLANK */);
+    printf("p->score: %d\n", p->score);
 
     printf("(*p).id: %d\n", (*p).id);
-    printf("(*p).name: %s\n", /* BLANK */);
+    printf("(*p).name: %s\n", (*p).name);
     printf("(*p).score: %d\n", (*p).score);
 
     return (0);
