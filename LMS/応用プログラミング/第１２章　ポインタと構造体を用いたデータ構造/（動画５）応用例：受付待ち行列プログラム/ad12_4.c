@@ -19,12 +19,13 @@ void init_queue(Queue* q) {
 void enqueue(Queue* q, int data) {
     Node* new_node = (Node*)malloc(sizeof(Node));
     if (new_node == NULL) {
-        exit(1); /* Using exit() function because function enqueue is void type */
+        exit(1);
     }
+
     new_node->data = data;
     new_node->next = NULL;
 
-    if (q->tail == NULL) { /* If queue is empty */
+    if (q->tail == NULL) {
         q->head = new_node;
         q->tail = new_node;
     } else {
@@ -36,7 +37,7 @@ void enqueue(Queue* q, int data) {
 int dequeue(Queue* q) {
     if (q->head == NULL) {
         printf("Queue is empty.\n");
-        return(-1); /* Error */ cant exit?
+        return(-1);
     }
 
     Node* temp = q->head;
