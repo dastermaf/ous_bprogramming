@@ -11,7 +11,7 @@ typedef struct player {
 
 int db_connect();
 int db_disconnect();
-int get_player(int r_id, Player *out);
+int get_player(unsigned int r_id, Player *out);
 int chopy(char *destination, const char *source);
 int omoi(unsigned int *destination, const char *source);
 int double_omoi(double *destination, const char *source);

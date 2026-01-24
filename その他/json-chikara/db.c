@@ -38,7 +38,7 @@ int db_disconnect() {
     return 1;
 }
 
-int get_player(int r_id, Player *out) {
+int get_player(const unsigned int r_id, Player *out) {
     char query[256];
     snprintf(query, 256, "SELECT * FROM %s WHERE id = %d", db_table, r_id);
 
