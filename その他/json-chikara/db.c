@@ -38,35 +38,35 @@ int db_disconnect() {
     return 1;
 }
 
-int get_player(const unsigned int r_id, Player *out) {
-    char query[256];
-    snprintf(query, 256, "SELECT * FROM %s WHERE id = %d", db_table, r_id);
-
+MYSQL_RES* send_collecting_query(const char *query) { // Добавили звездочку *
     if (mysql_query(connection, query)) {
-        fprintf(stderr, "[db.c] [get_player] MySQL Error %u: %s\n",
-                mysql_errno(connection), mysql_error(connection));
-        return 1;
+        fprintf(stderr, "MySQL Error: %s\n", mysql_error(connection));
+        return NULL;
     }
 
     MYSQL_RES *result = mysql_store_result(connection);
     if (result == NULL) {
-        fprintf(stderr, "[db.c] [get_player] Failed to store result: %s\n",
-                mysql_error(connection));
-        return 1;
+        return NULL;
     }
+
+    return result;
+}
+
+int get_player_by_id(unsigned int r_id, Player *out) {
+    char sql[256];
+    snprintf(sql, sizeof(sql), "SELECT * FROM players WHERE id = %u", r_id);
+
+    MYSQL_RES *result = send_collecting_query(sql);
+    if (!result) return 1;
 
     MYSQL_ROW row = mysql_fetch_row(result);
-    if (row == NULL) {
-        fprintf(stderr, "[db.c] [get_player] No data for identifier: %d\n", r_id);
-        mysql_free_result(result);
-        return 1;
+    if (row) {
+        omoi(&out->id, row[0]);
+        chopy(out->nickname, row[1]);
+        double_omoi(&out->balance, row[2]);
+        omoi(&out->level, row[3]);
+        chopy(out->create_at, row[4]);
     }
-
-    omoi(&out->id, row[0]);
-    chopy(out->nickname, row[1]);
-    double_omoi(&out->balance, row[2]);
-    omoi(&out->level, row[3]);
-    chopy(out->create_at, row[4]);
 
     mysql_free_result(result);
     return 0;

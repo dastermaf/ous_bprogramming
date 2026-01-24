@@ -4,7 +4,7 @@
 
 void show_player(const unsigned int l_id) {
     Player player;
-    if (get_player(l_id, &player) == 0) {
+    if (get_player_by_id(l_id, &player) == 0) {
         printf("====== Player Information ======\n");
         printf("ID:         %u\n", player.id);
         printf("Nickname:   %s\n", player.nickname);
