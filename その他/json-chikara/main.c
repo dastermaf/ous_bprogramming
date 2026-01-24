@@ -1,10 +1,11 @@
 #include "db.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void show_player(const unsigned int l_id) {
+void show_player(unsigned int table_type, const char *field, const char *value) {
     Player player;
-    if (get_player_by_id(l_id, &player) == 0) {
+    if (find(table_type, field, value, &player) == 0) {
         printf("====== Player Information ======\n");
         printf("ID:         %u\n", player.id);
         printf("Nickname:   %s\n", player.nickname);
@@ -13,59 +14,71 @@ void show_player(const unsigned int l_id) {
         printf("Created At: %s\n", player.create_at);
         printf("================================\n");
     } else {
-        fprintf(stderr, "Error: Could not retrieve player data\n");
+        fprintf(stderr, "Error: Could not retrieve player data for %s: %s\n", field, value);
     }
 }
 
 int input_player_id() {
     int id;
-
-    puts("Please enter player ID below to see stats of account.");
-    puts("Please do not enter the signed (negative) numbers.");
-    puts("Enter 0 to exit.\n");
-
+    puts("Please enter player ID (0 to exit):");
     while (1) {
         printf("Enter your ID: ");
         if (scanf("%d", &id) != 1) {
-            while(getchar() != '\n'); // Очистка буфера
+            while(getchar() != '\n'){}
             continue;
         }
-        if (id == 0) {
-            printf("Exiting...\n");
-            return 0;
-        }
-        if (id < 0) {
-            printf("Error: ID must be less than 20\n");
-            printf("Try again! Or enter 0 to exit.\n");
-            continue;
-        }
-
-        if (id > 20) {
-            printf("Error: ID must be less than 20\n");
-            printf("Try again! Or enter 0 to exit.\n");
+        if (id < 0 || id > 20) {
+            printf("Error: Invalid ID range. Try again.\n");
             continue;
         }
         break;
     }
-
-    printf("Your ID is <%d>\n\n", id);
     return id;
 }
 
-void input_show_player() {
-    int id = input_player_id();
-    show_player(id);
-    printf("\n");
+void show_menu() {
+    unsigned int selected_option;
+    char input_buffer[64];
+
+    printf("1. Show player stats by ID\n");
+    printf("2. Show player stats by nickname\n");
+    printf("Select one of these (1-2): ");
+
+    if (scanf("%u", &selected_option) != 1) {
+        while(getchar() != '\n'){}
+        return;
+    }
+
+    switch (selected_option) {
+        case 1: {
+            int id = input_player_id();
+            if (id != 0) {
+                snprintf(input_buffer, sizeof(input_buffer), "%d", id);
+                show_player(1, "id", input_buffer);
+            }
+            break;
+        }
+        case 2: {
+            printf("Enter nickname: ");
+            scanf("%63s", input_buffer);
+            show_player(1, "nickname", input_buffer);
+            break;
+        }
+        default:
+            printf("Invalid option selected.\n");
+            break;
+    }
 }
 
 int main(void) {
-    printf("\nStarting system...\n\n");
-    db_connect();
+    printf("Starting system...\n");
+    if (db_connect() != 0) {
+        return 1;
+    }
 
-    printf("\nSystem started!\n");
-    printf("\nWelcome to JSON Chikara!\n\n");
+    printf("System started! Welcome to JSON Chikara!\n\n");
 
-    input_show_player();
+    show_menu();
 
     db_disconnect();
     return 0;
