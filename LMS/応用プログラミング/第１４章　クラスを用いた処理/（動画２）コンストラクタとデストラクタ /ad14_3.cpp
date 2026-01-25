@@ -31,7 +31,7 @@ int main() {
         cout << "=== block end ===" << endl;
     } // Block scope
     // s2 is destroyed here
-
+    Student s3("Jopa Oslika");
     cout << "=== main end ===" << endl;
     // s1 is destroyed here
 
