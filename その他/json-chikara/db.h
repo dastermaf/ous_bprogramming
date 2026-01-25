@@ -1,5 +1,9 @@
-#ifndef DATABASE_H
-#define DATABASE_H
+#ifndef DB_H
+#define DB_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 typedef struct player {
     unsigned int id;
@@ -12,7 +16,7 @@ typedef struct player {
 typedef struct hero {
     unsigned int id;
     char name[50];
-    char class[20];
+    char h_class[20];
     double damage;
     char special[50];
     char description[256];
@@ -27,5 +31,8 @@ int double_omoi(double *destination, const char *source);
 int get_hero_by_id(unsigned int r_id, Hero *out);
 int get_hero_by_name(unsigned int r_id, Hero *out);
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -25,7 +25,6 @@ int db_connect() {
         fprintf(stderr, "[db.c] [db_connect] Filed to connect database: %s\n", mysql_error(connection));
         return 1;
     }
-    printf("[db.c] [db_connect] Connected to database\n");
     return 0;
 }
 
@@ -69,7 +68,7 @@ static int assign_data(int table_type, MYSQL_ROW row, void *out) {
         Hero *h = (Hero *)out;
         omoi(&h->id, row[0]);
         chopy(h->name, row[1]);
-        chopy(h->class, row[2]);
+        chopy(h->h_class, row[2]);
         double_omoi(&h->damage, row[3]);
         chopy(h->special, row[4]);
         chopy(h->description, row[5]);
