@@ -4,22 +4,22 @@
 using namespace std;
 
 int start() {
-    cout << "Starting system...\n";
+    clog << "[start] Starting system...\n";
     if (!db_connect()) {
-        cout << "System started!\n\n";
+        clog << "[start] System started!\n\n";
         return 0;
     }
-    cout << "\nFiled to start system!\n";
+    cerr << "\n[start] Filed to start system!\n";
     return 1;
 }
 
 int stop() {
-    cout << "\n\nSystem stopping...\n";
+    clog << "\n\n[stop] System stopping...\n";
     if (!db_disconnect()) {
-        cout << "System stopped!\n";
+        clog << "[stop] System stopped!\n";
         return 0;
     }
-    cout << "\nFiled to stop system!\n";
+    cerr << "\n[stop] Filed to stop system!\n";
     return 1;
 }
 
@@ -40,19 +40,19 @@ public:
             return true;
         }
 
-        cout << "Player data not loaded." << endl;
+        cerr << "\n\nPlayer data not loaded.\n\n" << endl;
         loaded = false;
         return false;
     };
 
     void print() const {
-        cout << "====== Player Information ======\n";
+        cout << "\n====== Player Information ======\n";
         cout << "ID:         " << data.id << endl;
         cout << "Nickname:   " << data.nickname << endl;
         cout << "Balance:    " << data.balance << endl;
         cout << "Level:      " << data.level << endl;
         cout << "Created At: " << data.create_at << endl;
-        cout << "================================\n";
+        cout << "================================\n\n";
     }
 
     bool input(const unsigned int column = 1) {
@@ -84,7 +84,7 @@ public:
                         return false;
                     }
                     if (temp_id < 1 || temp_id > 20) {
-                        cout << "Error: ID must be bigger then 1 and smaller then 20";
+                        cerr << "\nError: ID must be bigger then 1 and smaller then 20\n";
                         continue;
                     }
                 } else {
@@ -94,7 +94,7 @@ public:
                 }
             } else if (column == 2) {
                 if (user_input.length() < 3 || user_input.length() > 50) {
-                    cout << "Error: Nickname must be between 3 and 50 letters!" << endl;
+                    cerr << "\nError: Nickname must be between 3 and 50 letters!\n";
                     continue;
                 }
             }
@@ -116,7 +116,7 @@ void show_menu() {
         cin >> selected_option;
 
         if (cin.fail()) {
-            cout << "Error: Please enter a number.\n";
+            cerr << "\n\nError: Please enter a number.\n\n";
             clear();
             continue;
         }
@@ -137,7 +137,7 @@ void show_menu() {
                 cout << "Exiting...\n";
                 return;
             default:
-                cout << "Invalid option selected.\n";
+                cerr << "\n\nInvalid option selected.\n\n";
                 clear();
                 break;
         }
@@ -145,11 +145,15 @@ void show_menu() {
 }
 
 int main() {
-    start();
+    if (start()) {
+        cerr << "\n\nFiled to start.\n\n";
+    }
     cout << "WELCOME TO JSON CHIKARA!\n\n";
 
     show_menu();
 
-    stop();
+    if (stop()) {
+        cerr << "\n\nFiled to stop.\n\n";
+    }
     return 0;
 }

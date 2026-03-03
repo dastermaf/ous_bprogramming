@@ -9,7 +9,7 @@ private:
 public:
     Character(std::string n, int h) {
         name = n;
-        hp =h;
+        hp = h;
     }
 
     void attack(Character* target) {
