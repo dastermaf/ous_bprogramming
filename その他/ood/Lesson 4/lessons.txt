@@ -1,0 +1,19 @@
+Why is polymorphism needed in OOP?
+（OOPにおいて、なぜポリモーフィズムが必要ですか。）
+
+Explain polymorphism using the diagram below. Explain the process of method overriding.
+（以下の図を使ってポリモーフィズムを説明しなさい。メソッドオーバーライドの過程も説明しなさい。）
+
+Write the program code based on the diagram in question 2.
+（2番の図に基づいてプログラムコードを書きなさい。）
+
+What do interfaces and abstract classes mean in OOP?
+（OOPにおいて、インターフェースと抽象クラスは何を意味しますか。）
+
+Create a class named Artel_product (the name may be changed) with the parameters company_name and year.
+From this class, create any 3 household appliance classes that inherit from it, with an additional parameter model_name.
+For each appliance, create methods that show its own specific operation, and the method names must be the same for all of them.
+（Artel_product という名前のクラスを作成しなさい。なお、名前は変更してもよい。
+パラメータは company_name と year とする。このクラスを継承する任意の家電製品クラスを3つ作成しなさい。
+追加パラメータとして model_name を持たせること。各家電について、それぞれ特有の動作を示すメソッドを作成しなさい。
+ただし、メソッド名はすべて同じでなければならない。）

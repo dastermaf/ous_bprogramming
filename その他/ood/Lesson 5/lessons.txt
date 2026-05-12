@@ -1,0 +1,22 @@
+Give information about UML.
+（UMLについて説明しなさい。）
+
+Create a UML use case diagram for a library management system.
+Actors: librarian, library members
+Use cases: “Borrow Book”, “Return Book”, “Search Catalog”, “Renew Membership”
+（図書館管理システムの UML ユースケース図を作成しなさい。
+アクター: 図書館員、図書館会員
+ユースケース: 「本を借りる」「本を返す」「カタログを検索する」「会員資格を更新する」）
+
+Create a UML use case diagram for an online food ordering system.
+Actors: customer, restaurant staff
+Use cases: “Browse Menu”, “Place Order”, “Track Order”, “Manage Menu”
+（オンライン食品注文システムの UML ユースケース図を作成しなさい。
+アクター: 顧客、レストランスタッフ
+ユースケース: 「メニューを見る」「注文する」「注文を追跡する」「メニューを管理する」）
+
+Show the relationships between Company, Department, and Employee using class diagrams.
+（Company、Department、Employee の関係をクラス図で示しなさい。）
+
+Write a program that shows the relationships between the classes in question 4. All relationship types, including Inheritance and Aggregation, must be shown.
+（4番のクラス間の関係をプログラムで示しなさい。Inheritance と Aggregation を含む、すべての関係タイプを示すこと。）

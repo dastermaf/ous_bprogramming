@@ -1,0 +1,14 @@
+1. What are ERD diagrams?
+（ERD図とは何ですか。）
+
+2. Explain the difference between ERD diagrams and Class Diagrams.
+（ERD図とクラス図の違いを説明しなさい。）
+
+3. List the types of “messages” used in Sequence diagrams.
+（シーケンス図で使われる「メッセージ」の種類を列挙しなさい。）
+
+4. Explain the diagram shown in the image.
+（画像に示されている図を説明しなさい。）
+
+5. Based on the following condition, create an ERD diagram and write a JavaScript program to create the corresponding SQL tables and insert data into them.
+（次の条件に基づいてERD図を作成し、それに対応するSQLテーブルを作成し、データを挿入するためのJavaScriptプログラムを書きなさい。）

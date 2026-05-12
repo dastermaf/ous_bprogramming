@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-/* Structure for student */
+/* Structure for a student */
 typedef struct {
     char name[20];
     int score;
