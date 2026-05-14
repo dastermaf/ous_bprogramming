@@ -1,5 +1,5 @@
 #include <iostream>
-#include "db.h"
+#include "./db/db.h"
 
 using namespace std;
 
@@ -120,6 +120,7 @@ void show_menu() {
             clear();
             continue;
         }
+
         PlayerAccount player;
 
         switch (selected_option) {

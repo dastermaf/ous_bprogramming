@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define CNF_PATH "/home/dastermaf/Documents/教育/大学/岡山理科大学/Programming/その他/json-chikara/my.cnf"
+#define CNF_PATH "/home/hupl/Documents/教育/大学/岡山理科大学/Programming/その他/json-chikara/my.cnf"
 
 static MYSQL *connection = NULL;
 char db_player_table[25] = "players";
