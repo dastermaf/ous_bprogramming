@@ -1,4 +1,3 @@
-#include "./db/db.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,7 +17,7 @@ int chopy(char *destination, const char *source) {
     return 0;
 }
 
-int omoi(unsigned int *destination, const char *source) {
+int char_to_int(unsigned int *destination, const char *source) {
     if (source == NULL) {
         fprintf(stderr, "[omoi.c] [omoi] Filed to parce, source is NULL");
         return 1;
@@ -36,7 +35,7 @@ int omoi(unsigned int *destination, const char *source) {
     return 0;
 }
 
-int double_omoi(double *destination, const char *source) {
+int double_char_to_int(double *destination, const char *source) {
     if (source == NULL) {
         fprintf(stderr, "[omoi.c] [double_omoi] Filed to parce, source is NULL");
         return 1;

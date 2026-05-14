@@ -1,5 +1,6 @@
 #include <iostream>
 #include "./db/db.h"
+#include "./parser/parser.h"
 
 using namespace std;
 
@@ -79,7 +80,7 @@ public:
 
             if (column == 1) {
                 unsigned int temp_id = 0;
-                if (!omoi(&temp_id, user_input.c_str())) {
+                if (!char_to_int(&temp_id, user_input.c_str())) {
                     if (!temp_id) {
                         return false;
                     }

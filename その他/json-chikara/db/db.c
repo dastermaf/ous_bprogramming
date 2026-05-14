@@ -1,4 +1,6 @@
 #include "db.h"
+#include "../parser/parser.h"
+
 #include <stdio.h>
 #include <mysql.h>
 
@@ -59,14 +61,14 @@ static int assign_data(int table_type, MYSQL_ROW row, void *out) {
 
     if (table_type == 1) {
         Player *p = (Player *)out;
-        omoi(&p->id, row[0]);
+        char_to_int(&p->id, row[0]);
         chopy(p->nickname, row[1]);
         double_omoi(&p->balance, row[2]);
-        omoi(&p->level, row[3]);
+        char_to_int(&p->level, row[3]);
         chopy(p->create_at, row[4]);
     } else if (table_type == 2) {
         Hero *h = (Hero *)out;
-        omoi(&h->id, row[0]);
+        char_to_int(&h->id, row[0]);
         chopy(h->name, row[1]);
         chopy(h->h_class, row[2]);
         double_omoi(&h->damage, row[3]);
