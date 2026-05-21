@@ -63,7 +63,7 @@ static int assign_data(int table_type, MYSQL_ROW row, void *out) {
         Player *p = (Player *)out;
         char_to_int(&p->id, row[0]);
         chopy(p->nickname, row[1]);
-        double_omoi(&p->balance, row[2]);
+        double_char_to_int(&p->balance, row[2]);
         char_to_int(&p->level, row[3]);
         chopy(p->create_at, row[4]);
     } else if (table_type == 2) {
@@ -71,7 +71,7 @@ static int assign_data(int table_type, MYSQL_ROW row, void *out) {
         char_to_int(&h->id, row[0]);
         chopy(h->name, row[1]);
         chopy(h->h_class, row[2]);
-        double_omoi(&h->damage, row[3]);
+        double_char_to_int(&h->damage, row[3]);
         chopy(h->special, row[4]);
         chopy(h->description, row[5]);
     } else {
@@ -97,4 +97,22 @@ int find(int table_type, const char *type, const char *value, void *out) {
 
     mysql_free_result(result);
     return status;
+}
+
+int post_account(Player *data) {
+    char sql[512];
+
+    snprintf(sql, sizeof(sql), "INSERT INTO %s (nickname, balance, level) VALUES('%s', %.2f, %d)",
+        db_player_table, data->nickname, data->balance, data->level);
+
+    int status = mysql_query(connection, sql);
+
+    if (status) {
+        fprintf(stderr, "[db.c] [create_account] %s\n", mysql_error(connection));
+    } else {
+        return mysql_insert_id(connection);
+    }
+
+    fprintf(stderr, "MySQL Error: %s\n", mysql_error(connection));
+    return 1;
 }

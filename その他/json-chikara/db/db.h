@@ -29,6 +29,8 @@ int find(int table_type, const char *type, const char *value, void *out);
 int get_hero_by_id(unsigned int r_id, Hero *out);
 int get_hero_by_name(unsigned int r_id, Hero *out);
 
+int post_account(Player *data);
+
 #ifdef __cplusplus
 }
 #endif

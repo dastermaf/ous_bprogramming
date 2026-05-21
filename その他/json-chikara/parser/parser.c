@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "parser.h"
 
 int chopy(char *destination, const char *source) {
     if (source == NULL) {

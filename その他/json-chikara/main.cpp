@@ -1,6 +1,8 @@
 #include <iostream>
 #include "./db/db.h"
-#include "./parser/parser.h"
+#include "./account/account.h"
+#include "./utils/util.h"
+#include "./main.h"
 
 using namespace std;
 
@@ -24,95 +26,15 @@ int stop() {
     return 1;
 }
 
-void clear() {
-    cin.clear();
-    cin.ignore(10000, '\n');
-}
-
-class PlayerAccount {
-    Player data;
-    bool loaded = false;
-public:
-    PlayerAccount(): data{}, loaded(false) {};
-
-    bool fetch(const string &field, const string &value) {
-        if (find(1, field.c_str(), value.c_str(), &data) == 0) {
-            loaded = true;
-            return true;
-        }
-
-        cerr << "\n\nPlayer data not loaded.\n\n" << endl;
-        loaded = false;
-        return false;
-    };
-
-    void print() const {
-        cout << "\n====== Player Information ======\n";
-        cout << "ID:         " << data.id << endl;
-        cout << "Nickname:   " << data.nickname << endl;
-        cout << "Balance:    " << data.balance << endl;
-        cout << "Level:      " << data.level << endl;
-        cout << "Created At: " << data.create_at << endl;
-        cout << "================================\n\n";
-    }
-
-    bool input(const unsigned int column = 1) {
-        string type;
-        string prompt;
-
-        switch (column) {
-            case 2:
-                type = "nickname";
-                prompt = "Enter player nickname: ";
-                break;
-            case 1:
-            default:
-                type = "id";
-                prompt = "Enter player ID (1-20): ";
-                break;
-        }
-
-        string user_input;
-
-        while (true) {
-            cout << prompt;
-            cin >> user_input;
-
-            if (column == 1) {
-                unsigned int temp_id = 0;
-                if (!char_to_int(&temp_id, user_input.c_str())) {
-                    if (!temp_id) {
-                        return false;
-                    }
-                    if (temp_id < 1 || temp_id > 20) {
-                        cerr << "\nError: ID must be bigger then 1 and smaller then 20\n";
-                        continue;
-                    }
-                } else {
-                    cout << "Please type number";
-                    clear();
-                    continue;
-                }
-            } else if (column == 2) {
-                if (user_input.length() < 3 || user_input.length() > 50) {
-                    cerr << "\nError: Nickname must be between 3 and 50 letters!\n";
-                    continue;
-                }
-            }
-            break;
-        }
-        return fetch(type, user_input);
-    }
-};
-
 void show_menu() {
     unsigned int selected_option;
 
     while (true) {
         cout << "1. Show player stats by ID\n";
         cout << "2. Show player stats by nickname\n";
-        cout << "3. Exit\n";
-        cout << "Select one of these (1-3): ";
+        cout << "3. Create player account\n";
+        cout << "4. Exit\n";
+        cout << "Select one of these (1-4): ";
 
         cin >> selected_option;
 
@@ -122,20 +44,25 @@ void show_menu() {
             continue;
         }
 
-        PlayerAccount player;
+        Player empty_player = {0};
+
+        InterfaceAccount interface(empty_player);
 
         switch (selected_option) {
             case 1:
-                if (player.input()) {
-                    player.print();
+                if (interface.input_search_info(1)) {
+                    interface.print_account_info();
                 }
                 break;
             case 2:
-                if (player.input(2)) {
-                    player.print();
+                if (interface.input_search_info(2)) {
+                    interface.print_account_info();
                 }
                 break;
             case 3:
+                interface.register_account();
+                break;
+            case 4:
                 cout << "Exiting...\n";
                 return;
             default:

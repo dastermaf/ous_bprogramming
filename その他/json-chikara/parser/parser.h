@@ -7,7 +7,7 @@ extern "C" {
 
 int chopy(char *destination, const char *source);
 int char_to_int(unsigned int *destination, const char *source);
-int double_omoi(double *destination, const char *source);
+int double_char_to_int(double *destination, const char *source);
 
 #ifdef __cplusplus
 }
