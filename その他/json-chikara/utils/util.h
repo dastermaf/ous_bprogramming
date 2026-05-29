@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-clear();
+void clear();
 
 #ifdef __cplusplus
 }
