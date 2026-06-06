@@ -1,6 +1,8 @@
 1. What are ERD diagrams?
 （ERD図とは何ですか。）
 
+データベース
+
 2. Explain the difference between ERD diagrams and Class Diagrams.
 （ERD図とクラス図の違いを説明しなさい。）
 

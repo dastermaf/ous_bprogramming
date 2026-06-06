@@ -9,8 +9,6 @@
 
 using namespace std;
 
-int time = asctime(localtime(time));
-
 InterfaceAccount::InterfaceAccount(const Player &new_data) : data{new_data} {};
 
 void InterfaceAccount::print_account_info() const {
@@ -75,6 +73,8 @@ bool InterfaceAccount::input_search_info(const unsigned int column) {
 }
 
 int InterfaceAccount::register_account() {
+    time_t now = time(nullptr);
+    char *time_str = asctime(localtime(&now));
     string user_input;
 
     while (true) {
@@ -96,16 +96,14 @@ int InterfaceAccount::register_account() {
         cout << "Set up balance: " << endl;
         cin >> user_input;
 
-        if (!isdigit(user_input)) {
+        if (!indigit(user_input.c_str())) {
             cerr << "Balance must have only numbers\n";
-            continue;
-        }
+        };
 
         if (user_input.length() < 1 || user_input.length() > 15) {
             cerr << "Balance must be between 1 and 15 numbers\n";
             continue;
         }
-
         break;
     }
 
@@ -117,7 +115,7 @@ int InterfaceAccount::register_account() {
         cout << "Set up level: " << endl;
         cin >> user_input;
 
-        if (!isdigit(user_input)) {
+        if (!indigit(user_input.c_str())) {
             cerr << "Level must have only numbers\n";
             continue;
         }
@@ -132,7 +130,7 @@ int InterfaceAccount::register_account() {
 
     char_to_int(&data.level, user_input.c_str());
 
-    data.create_at = time;
+    chopy(data.create_at, time_str);
 
     if (ControlAccount(data).create_account()) {
         return 1;

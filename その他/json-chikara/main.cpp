@@ -12,7 +12,7 @@ int start() {
         clog << "[start] System started!\n\n";
         return 0;
     }
-    cerr << "\n[start] Filed to start system!\n";
+    cerr << "\n[start] Failed to start system!\n";
     return 1;
 }
 
@@ -22,7 +22,7 @@ int stop() {
         clog << "[stop] System stopped!\n";
         return 0;
     }
-    cerr << "\n[stop] Filed to stop system!\n";
+    cerr << "\n[stop] Failed to stop system!\n";
     return 1;
 }
 
@@ -75,14 +75,14 @@ void show_menu() {
 
 int main() {
     if (start()) {
-        cerr << "\n\nFiled to start.\n\n";
+        cerr << "\n\nFailed to start.\n\n";
     }
     cout << "WELCOME TO JSON CHIKARA!\n\n";
 
     show_menu();
 
     if (stop()) {
-        cerr << "\n\nFiled to stop.\n\n";
+        cerr << "\n\nFailed to stop.\n\n";
     }
     return 0;
 }

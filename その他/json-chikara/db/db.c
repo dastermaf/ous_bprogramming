@@ -24,7 +24,7 @@ int db_connect() {
     mysql_options(connection, MYSQL_READ_DEFAULT_GROUP, "base");
 
     if (!mysql_real_connect(connection, NULL, NULL, NULL, "json-chikara", 0, NULL, 0)) {
-        fprintf(stderr, "[db.c] [db_connect] Filed to connect database: %s\n", mysql_error(connection));
+        fprintf(stderr, "[db.c] [db_connect] Failed to connect database: %s\n", mysql_error(connection));
         return 1;
     }
     return 0;
@@ -36,7 +36,7 @@ int db_disconnect() {
         connection = NULL;
         return 0;
     }
-    fprintf(stderr, "[db.c] [db_disconnect] Filed to disconnect from database: %s\n", mysql_error(connection));
+    fprintf(stderr, "[db.c] [db_disconnect] Failed to disconnect from database: %s\n", mysql_error(connection));
     return 1;
 }
 

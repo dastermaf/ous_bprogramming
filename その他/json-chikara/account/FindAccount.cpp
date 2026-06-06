@@ -16,4 +16,4 @@ bool FindAccount::fetch(const string &field, const string &value, Player *output
     cerr << "\n\nPlayer data not loaded.\n\n" << endl;
     loaded = false;
     return false;
-}Player data;
+}

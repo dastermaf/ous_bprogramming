@@ -8,7 +8,7 @@ using namespace std;
 
 ControlAccount::ControlAccount(Player &account) : account(account) {};
 
-int ControlAccount::create_account() {
+int ControlAccount::create_account() const {
     account.id = post_account(&account);
 
     cout << "\nAccount created!\n" << endl;

@@ -23,11 +23,20 @@ public:
 Why is the Single Responsibility Principle needed?
 （Single Responsibility Principle、つまり単一責任の原則はなぜ必要ですか。）
 
+神様のクラスが発生しないように、責任ずつに分ける必要がある。
+神様のクラスの問題は多くの処理が一つの場所に集まっているということ。なんか修正しないといけないときには神様のクラスにやっているすべての情報を修正づらい、
+探しづらい状況になってしまう。
+
+
 Why is the Open-Closed Principle needed?
 （Open-Closed Principle、つまりオープン・クローズドの原則はなぜ必要ですか。）
 
+
+
 Explain the process shown in the image and represent it in JavaScript code according to the rules of SRP.
 （画像に示されている処理を説明し、SRP のルールに合うように JavaScript コードで表しなさい。）
+
+
 
 Explain the process shown in the image and represent it in JavaScript code according to OCP.
 （画像に示されている処理を説明し、OCP に合うように JavaScript コードで表しなさい。）

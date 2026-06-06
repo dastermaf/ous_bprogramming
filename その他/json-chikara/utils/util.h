@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 void clear();
+int indigit(const char *str);
 
 #ifdef __cplusplus
 }

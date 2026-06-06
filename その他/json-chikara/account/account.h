@@ -24,7 +24,7 @@ class ControlAccount {
     Player &account;
 public:
     ControlAccount(Player &account);
-    int create_account();
+    int create_account() const;
 };
 
 #endif
