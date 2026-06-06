@@ -48,8 +48,8 @@ bool InterfaceAccount::input_search_info(const unsigned int column) {
                 if (!temp_id) {
                     return false;
                 }
-                if (temp_id < 1 || temp_id > 20) {
-                    cerr << "\nError: ID must be bigger then 1 and smaller then 20\n";
+                if (user_input.length() > 20) {
+                    cerr << "\nError: ID must be 20 digits or less\n";
                     continue;
                 }
             } else {
